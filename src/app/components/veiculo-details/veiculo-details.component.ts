@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Veiculo } from 'src/app/models/veiculo.model';
 
 @Component({
   selector: 'app-veiculo-details',
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./veiculo-details.component.css']
 })
 export class VeiculoDetailsComponent implements OnInit {
-  currentVeiculo = {
+  currentVeiculo: Veiculo = {
     id: 0,
     placa: '',
     chassi: '',
@@ -26,7 +27,7 @@ export class VeiculoDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getVeiculo(this.route.snapshot.paramMap.get('id'));
+    this.getVeiculo(this.route.snapshot.params.id);
   }
 
   getVeiculo(id: any): void {
@@ -42,11 +43,13 @@ export class VeiculoDetailsComponent implements OnInit {
   }
 
   updateVeiculo(): void {
+    this.message = '';
+
     this.veiculoService.update(this.currentVeiculo.id, this.currentVeiculo)
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'O veículo foi atualizado com sucesso!';
+          this.message = response.message ? response.message : 'O veículo foi atualizado com sucesso!';
         },
         error => {
           console.log(error);

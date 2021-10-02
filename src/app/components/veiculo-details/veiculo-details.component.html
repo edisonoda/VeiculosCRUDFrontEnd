@@ -1,14 +1,14 @@
-<div style="width: 400px; margin: auto;">
-    <div *ngIf="currentVeiculo" class="edit-form">
+<div>
+    <div *ngIf="currentVeiculo.id" class="edit-form">
       <h4>Veículo</h4>
       <form>
         <div class="form-group">
-          <label for="title">Id</label>
+          <label for="id">Id</label>
           <input
             type="text"
             class="form-control"
             id="id"
-            [(ngModel)]="veiculo.id"
+            [(ngModel)]="currentVeiculo.id"
             name="id"
           />
         </div>
@@ -16,9 +16,10 @@
         <div class="form-group">
           <label for="placa">Placa</label>
           <input
+          type="text"
             class="form-control"
             id="placa"
-            [(ngModel)]="veiculo.placa"
+            [(ngModel)]="currentVeiculo.placa"
             name="placa"
           />
         </div>
@@ -26,9 +27,10 @@
         <div class="form-group">
             <label for="chassi">Chassi</label>
             <input
+            type="text"
                 class="form-control"
                 id="chassi"
-                [(ngModel)]="veiculo.chassi"
+                [(ngModel)]="currentVeiculo.chassi"
                 name="chassi"
             />
         </div>
@@ -36,9 +38,10 @@
         <div class="form-group">
             <label for="renavam">Renavam</label>
             <input
+            type="text"
               class="form-control"
               id="renavam"
-              [(ngModel)]="veiculo.renavam"
+              [(ngModel)]="currentVeiculo.renavam"
               name="renavam"
             />
         </div>
@@ -46,9 +49,10 @@
         <div class="form-group">
             <label for="modelo">Modelo</label>
             <input
+            type="text"
               class="form-control"
               id="modelo"
-              [(ngModel)]="veiculo.modelo"
+              [(ngModel)]="currentVeiculo.modelo"
               name="modelo"
             />
         </div>
@@ -56,9 +60,10 @@
         <div class="form-group">
             <label for="marca">Marca</label>
             <input
+            type="text"
               class="form-control"
               id="marca"
-              [(ngModel)]="veiculo.marca"
+              [(ngModel)]="currentVeiculo.marca"
               name="marca"
             />
         </div>
@@ -66,9 +71,10 @@
         <div class="form-group">
             <label for="ano">Ano</label>
             <input
+            type="text"
               class="form-control"
               id="ano"
-              [(ngModel)]="veiculo.ano"
+              [(ngModel)]="currentVeiculo.ano"
               name="ano"
             />
         </div>
@@ -81,7 +87,7 @@
   
       <button
         type="submit"
-        class="badge badge-success"
+        class="badge badge-success mb-2"
         (click)="updateVeiculo()"
       >
         Atualizar
@@ -89,7 +95,7 @@
       <p>{{ message }}</p>
     </div>
   
-    <div *ngIf="!currentVeiculo">
+    <div *ngIf="!currentVeiculo.id">
       <br />
       <p>Não foi possível acessar esse veículo...</p>
     </div>

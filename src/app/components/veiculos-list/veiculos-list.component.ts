@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Veiculo } from 'src/app/models/veiculo.model';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { VeiculoService } from 'src/app/services/veiculo.service';
 })
 export class VeiculosListComponent implements OnInit {
 
-  veiculos: any;
-  currentVeiculo = null;
+  veiculos?: Veiculo[];
+  currentVeiculo: Veiculo = {};
   currentIndex = -1;
 
   constructor(private veiculoService: VeiculoService) { }
@@ -32,11 +33,11 @@ export class VeiculosListComponent implements OnInit {
 
   refreshList(): void {
     this.retrieveVeiculos();
-    this.currentVeiculo = null;
+    this.currentVeiculo = {};
     this.currentIndex = -1;
   }
 
-  setActiveVeiculo(veiculo: any, index: any): void {
+  setActiveVeiculo(veiculo: Veiculo, index: any): void {
     this.currentVeiculo = veiculo;
     this.currentIndex = index;
   }

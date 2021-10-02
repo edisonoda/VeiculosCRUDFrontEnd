@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Veiculo } from 'src/app/models/veiculo.model';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { VeiculoService } from 'src/app/services/veiculo.service';
   styleUrls: ['./add-veiculo.component.css']
 })
 export class AddVeiculoComponent implements OnInit {
-  veiculo = {
+  veiculo: Veiculo = {
     id: 0,
     placa: '',
     chassi: '',
@@ -46,7 +47,6 @@ export class AddVeiculoComponent implements OnInit {
   }
 
   newVeiculo(): void {
-    this.submitted = false;
     this.veiculo = {
       id: 0,
       placa: '',

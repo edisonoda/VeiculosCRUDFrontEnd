@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Veiculo } from '../models/veiculo.model';
 
-const baseUrl = 'http://localhost:3000/veiculos';
+const baseUrl = 'http://localhost:3000/';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class VeiculoService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<any> {
-    return this.http.get(baseUrl);
+  getAll(): Observable<Veiculo[]> {
+    return this.http.get<Veiculo[]>(baseUrl);
   }
 
-  get(id: any): Observable<any> {
+  get(id: any): Observable<Veiculo> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
