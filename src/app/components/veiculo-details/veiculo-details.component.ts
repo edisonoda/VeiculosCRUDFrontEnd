@@ -49,7 +49,7 @@ export class VeiculoDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.message = response.message ? response.message : 'O veículo foi atualizado com sucesso!';
+          this.message = 'O veículo foi atualizado com sucesso!';
         },
         error => {
           console.log(error);

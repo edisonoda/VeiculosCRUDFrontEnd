@@ -9,6 +9,7 @@
           (click)="setActiveVeiculo(veiculo, i)"
         >
           {{ veiculo.id }}
+          {{ veiculo.modelo }}
         </li>
       </ul>
   
@@ -42,7 +43,7 @@
         </div>
   
         <a class="badge badge-warning" routerLink="/veiculos/{{ currentVeiculo.id }}">
-          Edit
+          Editar
         </a>
       </div>
   

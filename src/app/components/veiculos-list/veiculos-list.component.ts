@@ -9,7 +9,7 @@ import { VeiculoService } from 'src/app/services/veiculo.service';
 })
 export class VeiculosListComponent implements OnInit {
 
-  veiculos?: Veiculo[];
+  veiculos?: any[];
   currentVeiculo: Veiculo = {};
   currentIndex = -1;
 
@@ -23,8 +23,8 @@ export class VeiculosListComponent implements OnInit {
     this.veiculoService.getAll()
       .subscribe(
         data => {
-          this.veiculos = data;
-          console.log(data);
+          this.veiculos = data.veiculos;
+          console.log(this.veiculos);
         },
         error => {
           console.log(error);
@@ -37,7 +37,7 @@ export class VeiculosListComponent implements OnInit {
     this.currentIndex = -1;
   }
 
-  setActiveVeiculo(veiculo: Veiculo, index: any): void {
+  setActiveVeiculo(veiculo: Veiculo, index: number): void {
     this.currentVeiculo = veiculo;
     this.currentIndex = index;
   }
@@ -47,7 +47,7 @@ export class VeiculosListComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.retrieveVeiculos();
+          this.refreshList();
         },
         error => {
           console.log(error);
